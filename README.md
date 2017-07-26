@@ -26,3 +26,8 @@ object {
     )
 }
 ```
+### Change log
+
+```
+26-7-2017 Fixed PHP LINT errors
+```

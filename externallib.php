@@ -1,5 +1,6 @@
 <?php
-
+// This file is part of Moodle - http://moodle.org/
+//
 // Moodle is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
@@ -18,8 +19,8 @@
  *
  * @package    Get User Cohorts
  * @copyright  2016 Christos Savva
- * 
  */
+defined('MOODLE_INTERNAL') || die();
 require_once($CFG->libdir . "/externallib.php");
 
 class local_wsgetusercohorts_external extends external_api {
@@ -41,8 +42,8 @@ class local_wsgetusercohorts_external extends external_api {
     public static function get_user_cohorts($userid = null) {
         global $USER, $DB;
 
-        //Parameter validation
-        //REQUIRED
+        // Parameter validation.
+        // REQUIRED!
         $params = self::validate_parameters(self::get_user_cohorts_parameters(),
                 array('userid' => $userid));
 
@@ -55,29 +56,25 @@ class local_wsgetusercohorts_external extends external_api {
 
         $user = $DB->get_record('user', array('id' => $params['userid']));
 
-        if($user == null){
+        if ($user == null) {
             throw new \moodle_exception("User does not exist", 'get_user_cohorts');
         }
 
-        $cohorts_db = $DB->get_records_sql('SELECT hm.cohortid, h.idnumber, h.name 
-                    FROM mdl_cohort AS h 
-                    JOIN mdl_cohort_members AS hm ON h.id = hm.cohortid 
-                    JOIN mdl_user AS u ON hm.userid = u.id 
+        $cohortsdb = $DB->get_records_sql('SELECT hm.cohortid, h.idnumber, h.name
+                    FROM mdl_cohort AS h
+                    JOIN mdl_cohort_members AS hm ON h.id = hm.cohortid
+                    JOIN mdl_user AS u ON hm.userid = u.id
                     WHERE u.id=?', array($params['userid']));
 
         $returndata = array();
-        
         $cohorts = array();
-        foreach($cohorts_db as $cohort){
+        foreach ($cohortsdb as $cohort) {
             $item = (array) $cohort;
             array_push($cohorts, $item);
         }
-        
         $returndata['cohorts'] = $cohorts;
-        
         return $returndata;
     }
-
     /**
      * Returns description of method result value
      * @return external_description

@@ -24,9 +24,9 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2015021709;        // The current plugin version (Date: YYYYMMDDXX)
-$plugin->requires  = 2014111012;        // Requires this Moodle version
-$plugin->component = 'local_get_user_cohorts'; // Full name of the plugin (used for diagnostics)
+$plugin->version   = 2015021709;        // The current plugin version (Date: YYYYMMDDXX.
+$plugin->requires  = 2014111012;        // Requires this Moodle version.
+$plugin->component = 'local_get_user_cohorts'; // Full name of the plugin (used for diagnostics).
 $plugin->release = 1.0;
 $plugin->maturity = MATURITY_STABLE;
-$plugin->cron = 0; // how often we need chrone to run. 
+$plugin->cron = 0; // How often we need chrone to run.

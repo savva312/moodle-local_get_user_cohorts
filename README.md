@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/christos312/moodle-local_get_user_cohorts.svg?branch=master)](https://travis-ci.org/christos312/moodle-local_get_user_cohorts)
 # Get User cohorts
 
 ## Description

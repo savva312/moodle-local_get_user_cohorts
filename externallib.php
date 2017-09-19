@@ -62,13 +62,10 @@ class local_wsgetusercohorts_external extends external_api {
         }
 
         $cohortsdb = $DB->get_records_sql('SELECT hm.cohortid, h.idnumber, h.name
-                    FROM {cohort} AS h
-                    JOIN {cohort_members} AS hm ON h.id = hm.cohortid
-                    JOIN {user} AS u ON hm.userid = u.id
+                    FROM {cohort} h
+                    JOIN {cohort_members} hm ON h.id = hm.cohortid
+                    JOIN {user} u ON hm.userid = u.id
                     WHERE u.id=?', array($params['userid']));
-
-
-
         $returndata = array();
         $cohorts = array();
         foreach ($cohortsdb as $cohort) {

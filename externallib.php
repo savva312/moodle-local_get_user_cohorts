@@ -47,7 +47,8 @@ class local_wsgetusercohorts_external extends external_api {
         $params = self::validate_parameters(self::get_user_cohorts_parameters(),
                 array('userid' => $userid));
 
-        $context = get_context_instance(CONTEXT_USER, $USER->id);
+        $context = context_user::instance($USER->id);
+
         self::validate_context($context);
 
         if (!has_capability('moodle/user:viewdetails', $context)) {
@@ -61,10 +62,12 @@ class local_wsgetusercohorts_external extends external_api {
         }
 
         $cohortsdb = $DB->get_records_sql('SELECT hm.cohortid, h.idnumber, h.name
-                    FROM mdl_cohort AS h
-                    JOIN mdl_cohort_members AS hm ON h.id = hm.cohortid
-                    JOIN mdl_user AS u ON hm.userid = u.id
+                    FROM {cohort} AS h
+                    JOIN {cohort_members} AS hm ON h.id = hm.cohortid
+                    JOIN {user} AS u ON hm.userid = u.id
                     WHERE u.id=?', array($params['userid']));
+
+
 
         $returndata = array();
         $cohorts = array();

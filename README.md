@@ -29,6 +29,12 @@ object {
 ```
 ### Change log
 
-```
-26-7-2017 Fixed PHP LINT errors
-```
+
+#### [1.0] (2017-07-26)
+Fixed PHP LINT errors
+
+#### [1.1] (2017-09-19)
+**Closed issues:**
+-  [\#1](https://github.com/christos312/moodle-local_get_user_cohorts/issues/1)
+-  [\#2](https://github.com/christos312/moodle-local_get_user_cohorts/issues/2)
+-  [\#3](https://github.com/christos312/moodle-local_get_user_cohorts/issues/3)

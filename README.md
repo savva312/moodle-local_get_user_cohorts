@@ -38,3 +38,5 @@ Fixed PHP LINT errors
 -  [\#1](https://github.com/christos312/moodle-local_get_user_cohorts/issues/1)
 -  [\#2](https://github.com/christos312/moodle-local_get_user_cohorts/issues/2)
 -  [\#3](https://github.com/christos312/moodle-local_get_user_cohorts/issues/3)
+
+Author: Christos Savva
